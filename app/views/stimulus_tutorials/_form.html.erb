@@ -1,0 +1,29 @@
+<%= form_with(model: stimulus_tutorial) do |form| %>
+  <% if stimulus_tutorial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(stimulus_tutorial.errors.count, "error") %> prohibited this stimulus_tutorial from being saved:</h2>
+
+      <ul>
+      <% stimulus_tutorial.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <% if stimulus_tutorial.persisted? %>
+      <div class="float-end">
+        <%= link_to 'Destroy', stimulus_tutorial, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if stimulus_tutorial.persisted? %>
+      <%= link_to "Cancel", stimulus_tutorial, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", stimulus_tutorials_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

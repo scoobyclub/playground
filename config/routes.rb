@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :stimulus_tutorials
   get 'messages/new'
   get 'messages/create'
   resources :rooms do

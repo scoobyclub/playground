@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Stimulus Tutorials</h1>
+  </div>
+
+  <div class="col-sm-6 text-end">
+    <%= link_to new_stimulus_tutorial_path, class: 'btn btn-primary' do %>
+      Add New Stimulus tutorial
+    <% end %>
+
+  </div>
+
+  <div data-controller="stimulus-tutorial" data-stimulus-tutorial-number-value=4>
+    <!--    <h1 data-target="stimulus-tutorial.output"></h1>-->
+    <h1 data-stimulus-tutorial-target="output"></h1>
+
+    <button data-action="stimulus-tutorial#clicked"> CLICK ME</button>
+  </div>
+
+
+  <div data-controller="text-input">
+    <input type="text" data-action="text-input#changed" data-text-input-target="input">
+    <h1 data-text-input-target="output"></h1>
+  </div>
+
+  <div data-controller="styling" data-styling-primary-class="btn-primary">
+    <button class='btn' data-styling-target="button" data-action="styling#clicked">
+      CLICK ME
+    </button>
+  </div>
+
+  <div data-controller="styling" data-styling-primary-class="btn-primary">
+    <button class='btn' data-styling-target="button" data-action="styling#clicked:once">
+      CLICK ME
+    </button>
+  </div>
+</div>

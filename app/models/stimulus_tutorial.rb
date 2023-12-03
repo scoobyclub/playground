@@ -1,0 +1,2 @@
+class StimulusTutorial < ApplicationRecord
+end
