@@ -15,6 +15,9 @@ import "./controllers"
 
 import * as bootstrap from "bootstrap"
 
+import {StreamActions} from "@hotwired/turbo"
+
+
 document.addEventListener("turbo:load", () => {
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -26,3 +29,19 @@ document.addEventListener("turbo:load", () => {
     return new bootstrap.Popover(popoverTriggerEl)
   })
 })
+
+StreamActions.console_log = function(){
+    console.log("console_log")
+    console.log(this.getAttribute("message"), this.templateContent, this.targetElements)
+}
+
+StreamActions.notification = function(){
+    console.log("notification")
+    let title = this.getAttribute("title")
+    Notification.requestPermission(function(status) {
+        console.log( status )
+        if (status == "granted"){
+            new Notification(title)
+        }
+    })
+}

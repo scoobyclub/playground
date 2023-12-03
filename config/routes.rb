@@ -1,8 +1,19 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'messages/new'
+  get 'messages/create'
+  resources :rooms do
+    resources :messages
+  end
+  draw :madmin
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
+
+  get '/home', to: 'home#index'
+  get '/turbostreams', to: 'home#turbostreams'
+
+
 authenticate :user, lambda { |u| u.admin? } do
   mount Sidekiq::Web => '/sidekiq'
 
